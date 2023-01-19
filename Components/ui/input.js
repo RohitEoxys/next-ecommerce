@@ -1,18 +1,3 @@
-// import React from "react";
-
-// import "./Input.css";
-
-// const Input = React.forwardRef((props, ref) => {
-//   return (
-//     <div className="input">
-//       <label htmlFor={props.input.id}>{props.label}</label>
-//       <input ref={ref} {...props.input} value={props.value} onChange={props.onChange} required/>
-//     </div>
-//   );
-// });
-
-// export default Input;
-
 import React, { useReducer, useEffect } from "react";
 
 import { validate } from "../util/validators";
@@ -87,8 +72,10 @@ const Input = (props) => {
 
   return (
     <div
-      className={`form-control ${
-        !inputState.isValid && inputState.isTouched && "form-control--invalid"
+      className={`${classes["form-control"]} ${
+        !inputState.isValid &&
+        inputState.isTouched &&
+        classes["form-control--invalid"]
       }`}>
       <label htmlFor={props.id}>{props.label}</label>
       {element}

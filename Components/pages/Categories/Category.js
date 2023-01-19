@@ -10,7 +10,6 @@ const Category = () => {
       <CategoryBox
         key={e.id}
         id={e.id}
-        imageAlt={e.imageAlt}
         description={e.description}
         title={e.name}
         imagePath={e.imagePath}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import classes from "./Main.module.scss";
-import Slider from "./Slider/Slider";
+import Slider from "./Slider/slider";
 import Categories from "../../pages/Categories/Category";
 import Aboutus from "@/Components/pages/AboutUs/Aboutus";
 

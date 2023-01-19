@@ -7,7 +7,6 @@ const index = () => {
   const router = useRouter();
   const productId = router.query.productId;
   const itemDetails = categoryProductsData.filter((e) => e.title === productId);
-  console.log(itemDetails);
 
   return (
     <>

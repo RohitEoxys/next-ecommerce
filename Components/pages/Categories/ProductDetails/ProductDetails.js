@@ -10,16 +10,16 @@ import { categoryProductsData } from "../ProductData/categoryProductsData";
 const ProductDetails = (props) => {
   const router = useRouter();
   const categoryName = router.query.categoryId;
+  const selectedProduct = router.query.productId;
 
   const relatedProductsData = categoryProductsData.filter((e) => {
     return e.categoryId === categoryName;
   });
-  const productIndex = relatedProductsData.findIndex(
-    (e) => e.title === categoryName
-  );
 
-  console.log(productIndex);
-  // const filterProduct = relatedProductsData.splice();
+  const removeSelectedProduct = relatedProductsData.filter(
+    (e) => e.title !== selectedProduct
+  );
+  console.log(removeSelectedProduct);
 
   return (
     <div className={classes["main_container"]}>
@@ -47,8 +47,12 @@ const ProductDetails = (props) => {
       <div className={classes["related_container"]}>
         <h2>Related Products</h2>
         <div className={classes["related_container-cards"]}>
-          {relatedProductsData.map((e) => (
-            <RelatedProducts imagePath={e.imagePath} title={e.title} />
+          {removeSelectedProduct.map((e) => (
+            <RelatedProducts
+              imagePath={e.imagePath}
+              title={e.title}
+              key={e.id}
+            />
           ))}
         </div>
       </div>

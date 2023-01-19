@@ -1,80 +1,55 @@
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Carousel from "react-bootstrap/Carousel";
 
-import BtnSlider from "./BtnSlider";
-import dataSlider from "./dataSlider";
 import classes from "./Slider.module.scss";
 
-export default function Slider() {
-  const [slideIndex, setSlideIndex] = useState(1);
-
-  useEffect(() => {
-    let interval;
-    if (slideIndex !== dataSlider.length + 1) {
-      interval = setInterval(() => {
-        setSlideIndex(slideIndex + 1);
-      }, 10000);
-    } else if (slideIndex === dataSlider.length + 1) {
-      setSlideIndex(1);
-      clearInterval(interval);
-    }
-
-    return () => clearInterval(interval);
-  }, [slideIndex]);
-
-  const nextSlide = () => {
-    if (slideIndex !== dataSlider.length) {
-      setSlideIndex(slideIndex + 1);
-    } else if (slideIndex === dataSlider.length) {
-      setSlideIndex(1);
-    }
-  };
-
-  const prevSlide = () => {
-    if (slideIndex !== 1) {
-      setSlideIndex(slideIndex - 1);
-    } else if (slideIndex === 1) {
-      setSlideIndex(dataSlider.length);
-    }
-  };
-
-  const moveDot = (index) => {
-    setSlideIndex(index);
-  };
-
+function CarouselFadeExample() {
   return (
     <div className={classes["container-slider"]}>
-      {dataSlider.map((obj, index) => {
-        return (
-          <div
-            key={obj.id}
-            className={
-              slideIndex === index + 1
-                ? classes["slide active-anim"]
-                : classes["slide"]
-            }>
-            <Image
-              src={require(`../../../../Assets/Slider/${index + 1}.jpg`)}
-              alt="finance"
-              className={`${slideIndex === 1 ? classes["logoImage"] : ""}`}
-              priority
-            />
-          </div>
-        );
-      })}
-      <BtnSlider moveSlide={nextSlide} direction={"next"} />
-      <BtnSlider moveSlide={prevSlide} direction={"prev"} />
+      <Carousel fade style={{ height: "560px" }} variant="dark">
+        <Carousel.Item>
+          <Image
+            className="d-block w-100"
+            src={require("../../../../Assets/Slider/1.jpg")}
+            alt="First slide"
+            width={560}
+            height={560}
+          />
+          <Carousel.Caption>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Image
+            className="d-block w-100"
+            src={require("../../../../Assets/Slider/2.jpg")}
+            alt="Second slide"
+            width={560}
+            height={560}
+          />
 
-      <div className={classes["container-dots"]}>
-        {Array.from({ length: 3 }).map((item, index) => (
-          <div
-            key={index}
-            onClick={() => moveDot(index + 1)}
-            className={
-              slideIndex === index + 1 ? classes["dot active"] : classes["dot"]
-            }></div>
-        ))}
-      </div>
+          <Carousel.Caption>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Image
+            className="d-block w-100"
+            src={require("../../../../Assets/Slider/3.jpg")}
+            alt="Third slide"
+            width={560}
+            height={560}
+          />
+
+          <Carousel.Caption>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
     </div>
   );
 }
+
+export default CarouselFadeExample;
