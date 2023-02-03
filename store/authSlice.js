@@ -1,5 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"; //next js redux toolkit
 
 const initialAuthState = { isAuthenticated: false };
 
@@ -16,10 +15,6 @@ const authSlice = createSlice({
   },
 });
 
-const store = configureStore({
-  reducer: { auth: authSlice.reducer },
-});
+export const { login, logout } = authSlice.actions;
 
-export const authActions = authSlice.actions;
-
-export default store;
+export default authSlice;

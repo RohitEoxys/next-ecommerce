@@ -6,14 +6,15 @@ const CategoryBox = (props) => {
   const router = useRouter();
 
   const categoryClickHandler = () => {
-    router.push(`./${props.title}`);
+    router.push(`./${props.categoryName}`);
   };
 
   return (
     <Card
       border="info"
       style={{ margin: "1rem", cursor: "pointer" }}
-      onClick={categoryClickHandler}>
+      onClick={categoryClickHandler}
+    >
       <Image
         src={require(`../../../../Assets/Categories/CategoryBox/${props.imagePath}.jpg`)}
         width={350}

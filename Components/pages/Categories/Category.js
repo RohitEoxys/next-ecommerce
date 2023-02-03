@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import CategoryBox from "./CategoryBoxes/CategoryBox";
-import classes from "./Category.module.scss";
 import { categoryData } from "./ProductData/categoryData";
+import classes from "./Category.module.scss";
+import { fetchProducts } from "@/store/productSlice";
 
 const Category = () => {
+  const dispatch = useDispatch();
+  const productStatus = useSelector((state) => state.products.status);
+  const products = useSelector((state) => state.products.productItems);
+  console.log(products);
+
+  useEffect(() => {
+    if (productStatus === "idle") {
+      dispatch(fetchProducts());
+    }
+  }, []);
+
   const categoryBox = categoryData.map((e) => {
     return (
       <CategoryBox
@@ -13,6 +26,7 @@ const Category = () => {
         description={e.description}
         title={e.name}
         imagePath={e.imagePath}
+        categoryName={e.categoryName}
       />
     );
   });

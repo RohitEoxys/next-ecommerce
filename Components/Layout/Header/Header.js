@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
 import { useSelector, useDispatch } from "react-redux";
 import classes from "./Header.module.scss";
-import { authActions } from "@/Components/store";
+import { authActions } from "@/store";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -36,14 +36,16 @@ const Header = () => {
           <Button
             variant="light"
             style={{ width: "6rem" }}
-            onClick={logoutBtnHandler}>
+            onClick={logoutBtnHandler}
+          >
             Logout
           </Button>
         ) : (
           <Button
             variant="light"
             style={{ width: "6rem" }}
-            onClick={loginBtnHandler}>
+            onClick={loginBtnHandler}
+          >
             Log In
           </Button>
         )}

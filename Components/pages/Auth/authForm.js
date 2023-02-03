@@ -10,7 +10,7 @@ import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from "@/Components/util/validators";
-import { authActions } from "@/Components/store";
+import { authActions } from "@/store";
 import Card from "../../ui/card";
 
 const authForm = () => {
@@ -61,6 +61,7 @@ const authForm = () => {
     event.preventDefault();
     dispatch(authActions.login(true));
     localStorage.setItem("logged-In", true);
+    console.log(formState.inputs);
   };
 
   return (
@@ -100,7 +101,8 @@ const authForm = () => {
             <Button
               type="submit"
               disabled={!formState.isValid}
-              onClick={loginClickHandler}>
+              onClick={loginClickHandler}
+            >
               {isLoginMode ? "LOGIN" : "SIGNUP"}
             </Button>
           </div>

@@ -8,7 +8,6 @@ import classes from "./categoryItems.module.scss";
 const CategoryItems = (props) => {
   const router = useRouter();
   const { categoryId } = router.query;
-  // const imageWidth =
 
   const categoryItemHandler = () => {
     router.push(`./${categoryId}/productDetails/${props.name}`);
@@ -18,7 +17,7 @@ const CategoryItems = (props) => {
     <div className={classes["card-container"]}>
       <Card border="primary" style={{ margin: "1rem", cursor: "pointer" }}>
         <Image
-          src={require(`../../../../Assets/Categories/CategoryProducts/${props.imagePath}.webp`)}
+          src={props.imagePath}
           width={300}
           height={350}
           alt={props.name}

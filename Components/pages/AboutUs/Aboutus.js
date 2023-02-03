@@ -33,6 +33,7 @@ const Aboutus = () => {
             src={require("../../../Assets/Aboutus/background.jpg")}
             height={500}
             width={600}
+            alt="shopping"
             priority
           />
         </div>
