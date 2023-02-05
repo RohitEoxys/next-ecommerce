@@ -10,7 +10,7 @@ import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from "@/Components/util/validators";
-import { authActions } from "@/store";
+import { authActions } from "@/store/store";
 import Card from "../../ui/card";
 
 const authForm = () => {

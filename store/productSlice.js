@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { client } from "@/Components/API/client";
+import { HYDRATE } from "next-redux-wrapper";
 
 const initialProductState = {
   productItems: [],
@@ -34,6 +35,11 @@ const productSlice = createSlice({
   name: "products",
   initialState: initialProductState,
   reducers: {},
+  // nextReducer: {
+  //   [HYDRATE]: (state, action) => {
+  //     return { ...state, ...action.payload };
+  //   },
+  // },
   extraReducers(builder) {
     builder
       .addCase(fetchProducts.pending, (state, action) => {

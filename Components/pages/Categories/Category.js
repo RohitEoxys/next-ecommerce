@@ -9,8 +9,7 @@ import { fetchProducts } from "@/store/productSlice";
 const Category = () => {
   const dispatch = useDispatch();
   const productStatus = useSelector((state) => state.products.status);
-  const products = useSelector((state) => state.products.productItems);
-  console.log(products);
+  console.log(productStatus);
 
   useEffect(() => {
     if (productStatus === "idle") {

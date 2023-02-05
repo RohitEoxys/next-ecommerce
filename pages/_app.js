@@ -1,15 +1,14 @@
 import "@/styles/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "@/Components/Layout/Layout";
-import { Provider } from "react-redux";
-import Store from "@/store";
+import { wrapper } from "@/store/store";
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
-    <Provider store={Store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </Provider>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
+
+export default wrapper.withRedux(App);
